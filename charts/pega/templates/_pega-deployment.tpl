@@ -67,6 +67,9 @@ spec:
 {{- if .custom.serviceAccountName }}
       serviceAccountName: {{ .custom.serviceAccountName }}
 {{- end }}
+{{- if (eq .custom.automountServiceAccountToken false) }}
+      automountServiceAccountToken: {{ .custom.automountServiceAccountToken }}
+{{- end }}
 {{- end }}
       volumes:
       # Volume used to mount config files.

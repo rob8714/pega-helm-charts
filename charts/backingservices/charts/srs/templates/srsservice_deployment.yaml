@@ -16,6 +16,9 @@ spec:
       labels:
 {{- include "srs.srs-service.match-labels" . | indent 8 }}
     spec:
+{{- if (eq .Values.automountServiceAccountToken false) }}
+      automountServiceAccountToken: {{ .Values.automountServiceAccountToken }}
+{{- end }}
       imagePullSecrets:
         - name: {{ template "srsRegistrySecretName" . -}}
         {{ if .Values.srsRuntime.imagePullSecretNames }}

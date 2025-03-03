@@ -4,7 +4,7 @@ global:
   # each configuration option, see the project readme.
 
   # Enter your Kubernetes provider.
-  provider: "YOUR_KUBERNETES_PROVIDER"
+  provider: "openshift"
 
   # Enter a name for the deployment if using multi-tenant services such as the Search and Reporting Service.
   customerDeploymentId:
@@ -257,6 +257,9 @@ global:
           memory: "12Gi"
           cpu: 4
 
+      custom:
+        automountServiceAccountToken: false
+
       # To configure an alternative user for custom image, set value for runAsUser.
       # To configure an alternative group for volume mounts, set value for fsGroup
       # See, https://github.com/pegasystems/pega-helm-charts/blob/master/charts/pega/README.md#security-context
@@ -373,7 +376,7 @@ global:
 
 # Cassandra automatic deployment settings.
 cassandra:
-  enabled: true
+  enabled: false
   persistence:
     enabled: true
   resources:
